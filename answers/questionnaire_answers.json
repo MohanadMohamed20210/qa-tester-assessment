@@ -1,0 +1,45 @@
+{
+  "metadata": {
+    "generated_at": "2026-06-02T07:58:25.233Z",
+    "assessment_version": "1.0",
+    "company": "UTD Software",
+    "role": "QA Tester (Laravel + Flutter)"
+  },
+  "about_you": {
+    "full_name": "mohanad mohamed abdelghany",
+    "email": "mohanadmohamed20210@gmail.com",
+    "github_username": "MohanadMohamed20210",
+    "qa_experience": "2-3",
+    "primary_stack": "full_stack"
+  },
+  "skills_self_assessment": {
+    "manual_testing": 5,
+    "api_testing": 5,
+    "selenium_webdriver": 5,
+    "laravel_testing": 1,
+    "flutter_testing": 2,
+    "mysql_sql": 5,
+    "cicd": 3,
+    "performance_testing": 4,
+    "preferred_bug_tracker": "jira"
+  },
+  "technical_knowledge": {
+    "q8_complex_feature": "One of the most complex things I tested was the synchronization between OCPP and V2G / ISO 15118 during an EV charging session.\nIt was complex because the charger had to handle two sides at the same time: the EV communication through V2G, and the backend communication through OCPP. Any timing issue could cause wrong transaction status, wrong charging power, or incorrect session stop.\nI approached it by testing each layer separately first, then testing the full end-to-end flow. I compared EV simulator logs, charger logs, and OCPP backend messages to make sure the states matched correctly from session start until charging stopped.",
+    "q9_automate_vs_manual": "I decide based on value, stability, ROI, and the SDLC we are using. Before automating any test case, I check the return on investment: will this automation save time, reduce repeated manual work, and be useful in future releases, or will it cost more maintenance than value? I usually automate repeated and time-consuming test cases, especially critical flows that we need to check in every release, like login, payment, wallet, API flows, or the main user journey. I also prefer to automate stable features because if the feature is changing a lot, the automation will keep breaking and waste time. For manual testing, I keep the cases that need human judgment, like exploratory testing, ad-hoc testing, new features that are still changing, UI/UX checks, and areas where requirements are not stable yet. So my rule is: automate stable, repeated, high-value checks with good ROI, and keep manual testing for new, changing, or exploratory areas.",
+    "q10_postman_review": "This test only checks status 200 and saves the token. It can pass even if the login response is wrong, for example if the token is empty, the user data is missing, the wrong user is returned, or the response shape changed. I would add assertions for response time, token existence, token type, user object, expected email/user id, and maybe JSON schema. Also, I would add negative tests for wrong password and missing fields. A better test should catch real bugs, not only confirm that the endpoint returned 200.",
+    "q11_selenium_review": "The main problems are Thread.sleep, fragile XPath, missing password step, hard-coded URL/test data, and a weak assertion using page source. I would replace sleeps with WebDriverWait, use stable locators like id/name/data-testid when available, move URL and credentials to config, enter both email and password, and assert a real dashboard element is visible instead of searching the whole page source. Also, I would add cleanup with driver.quit() and take screenshot on failure. A better check would be waiting for something like a dashboard title or user greeting to be visible after login.",
+    "q12_race_condition_test": "I would try to make the race condition controlled, not only depend on random load. I would create one wallet with a known balance, for example 1000 coins, then send two requests at the same time where each request tries to charge 1000 coins. I would use Laravel feature tests with parallel HTTP calls, or a small script/JMeter if I want to hit the real API. The important assertion is that only one request should succeed, the wallet should never become negative, and the final balance should be correct. I would also check the database transactions table to make sure there is no double deduction. If both requests return 200 or the wallet balance becomes wrong, then the test reproduced the concurrency bug.",
+    "q13_friday_bug": "First I would confirm the issue quickly and collect evidence, like logs, screenshots, affected users, and exact steps. Then I would inform the team immediately, especially the developer, tech lead, product owner, and support if customers are affected. After that, I would check the impact: is it blocking all users, only one feature, or only one platform. If there is a safe rollback, I would recommend rollback first. If rollback is risky, I would support a hotfix and test only the affected area plus the most important related flow. After the fix, I would verify production or staging depending on the process. Finally, I would write a short incident note: what happened, why it was missed, what test should be added, and how we prevent it next time."
+  },
+  "how_you_work": {
+    "q14_bug_disagreement": "One time I disagreed with a developer about an issue in the EV charging flow. The charger was sending the OCPP transaction status before the V2G session was fully synchronized, so from the backend side it looked like the charging session started correctly, but from the EV side the state was not ready yet. The developer first said it was not a bug because the OCPP message was technically sent. I explained that the problem was not only sending the message, but sending it at the wrong time, because it could make the backend and the EV session state inconsistent. I showed the EV simulator logs, charger logs, and OCPP messages with timestamps, then we checked the sequence together. After that, we agreed it was a real synchronization bug. The fix was to update the state handling so the OCPP transaction event is sent only after the correct V2G state is reached.",
+    "q15_staying_current": "I try to stay current in a practical way, not only by reading. I follow QA communities, tool documentation, and real examples from people using tools like Postman, Selenium, Playwright, JMeter, TestRail, and CI/CD pipelines. When I learn something new, I try to apply it in a small project or local practice, because this helps me understand the real problems, not just the theory. I also review common testing mistakes, like flaky tests, weak assertions, bad locators, missing API validations, and poor test data handling. For me, the best way to improve is to keep practicing, compare my work with better examples, and update my approach based on the project needs.",
+    "q16_bug_report_quality": "A good bug report is one that helps the developer reproduce and fix the issue without wasting time. It should have a clear title, environment, exact steps, test data, expected result, actual result, screenshot or video, logs if needed, and severity with a short reason.\nThe difference is clarity. A bug report a developer loves is specific, reproducible, and gives evidence. For example: “When quantity is -1 in Send Gift, wallet balance increases from 10000 to 10500” with steps and screenshot. A bug report they ignore is vague, like “wallet is wrong” or “button not working”, without steps or proof.\nI also try to avoid blaming language. I write the issue in a professional way, explain the impact, and if I have a suspected root cause from logs or DevTools, I mention it clearly. The goal is not only to report the bug, but to make it easy to understand, reproduce, and prioritize.",
+    "q17_ai_usage": "I used AI as a helper, not as a replacement for my testing. I used it mainly to organize my thoughts, improve the Markdown formatting, and make the files easier to read, because I am not very strong with writing clean Markdown reports. For the PHP/Laravel exercise, I am not very experienced in PHP, so I used AI to help me translate my testing ideas into a simple PHPUnit-style test structure. The ideas I focused on were still mine, like checking authentication, wallet balance changes, database transaction creation, and duplicate request behavior."
+  },
+  "submissions": {
+    "q18_video_url": "https://drive.google.com/file/d/1K8j_xzfR59bROdkvvi23Wx9KXMOCV4-_/view?usp=drive_link",
+    "q19_github_repo_url": "https://github.com/MohanadMohamed20210/qa-tester-assessment.git",
+    "q20_anything_else": "This was one of the strongest assessments I have worked on. It was not only about answering questions, but it made me practice real QA work: test case design, API testing, automation refactoring, bug reporting, DevTools investigation, and risk thinking. I learned from it while working, especially in areas I was not fully comfortable with before, like writing better Markdown reports and understanding how to structure some backend test ideas. I really appreciate that the assessment allowed practical thinking instead of only theoretical answers."
+  }
+}
