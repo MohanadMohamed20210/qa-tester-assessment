@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Exercise 4 Selenium Suite" verbose="1" parallel="false">
+    <test name="Login Tests">
+        <groups>
+            <run>
+                <include name="login"/>
+                <include name="smoke"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="app.LoginTests"/>
+        </classes>
+    </test>
+</suite>

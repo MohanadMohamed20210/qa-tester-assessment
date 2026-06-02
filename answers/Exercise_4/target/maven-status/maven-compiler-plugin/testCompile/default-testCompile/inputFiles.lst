@@ -1,0 +1,10 @@
+/home/mohanad/assissment/qa-tester-assessment/answers/Exercise_4/src/test/java/app/pages/DashboardPage.java
+/home/mohanad/assissment/qa-tester-assessment/answers/Exercise_4/src/test/java/app/pages/LoginPage.java
+/home/mohanad/assissment/qa-tester-assessment/answers/Exercise_4/src/test/java/app/config/PropertyLoader.java
+/home/mohanad/assissment/qa-tester-assessment/answers/Exercise_4/src/test/java/app/driver/BrowserType.java
+/home/mohanad/assissment/qa-tester-assessment/answers/Exercise_4/src/test/java/app/config/TestConfig.java
+/home/mohanad/assissment/qa-tester-assessment/answers/Exercise_4/src/test/java/app/driver/DriverFactory.java
+/home/mohanad/assissment/qa-tester-assessment/answers/Exercise_4/src/test/java/app/utils/Waits.java
+/home/mohanad/assissment/qa-tester-assessment/answers/Exercise_4/src/test/java/app/pages/BasePage.java
+/home/mohanad/assissment/qa-tester-assessment/answers/Exercise_4/src/test/java/app/utils/ScreenshotHelper.java
+/home/mohanad/assissment/qa-tester-assessment/answers/Exercise_4/src/test/java/app/LoginTests.java
